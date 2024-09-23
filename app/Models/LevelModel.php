@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class LevelModel extends Model
+{
+    use HasFactory;
+
+    protected $table = 'm_level';            //Mendefiniskan nama table yang digunakan oleh model ini
+    protected $primaryKey = 'level_id';      //Mendefinisikan primary key dari table yang digunakan
+    
+}
