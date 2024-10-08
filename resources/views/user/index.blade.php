@@ -68,8 +68,8 @@ Pengguna</th><th>Aksi</th></tr>
           }, 
           columns: [ 
             { 
- // nomor urut dari laravel datatable addIndexColumn() 
- data: "DT_RowIndex",             
+            // nomor urut dari laravel datatable addIndexColumn() 
+          data: "DT_RowIndex",             
               className: "text-center", 
               orderable: false, 
               searchable: false     
