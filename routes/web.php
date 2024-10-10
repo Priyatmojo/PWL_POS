@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function(){
         });
     });
 
-    Route::group(['prefix' => 'barang'], function () {
+    Route::middleware(['authorize:AMD,MNG'])->group(function() {
         Route::get('/', [BarangController::class, 'index']);
         Route::post('/list', [BarangController::class, 'list']);
         Route::get('/create', [BarangController::class, 'create']);
