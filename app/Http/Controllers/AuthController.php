@@ -19,10 +19,14 @@ class AuthController extends Controller {
             $credentials = $request->only('username', 'password');
 
             if (Auth::attempt($credentials)) {
+                if (Auth::user()->image_profile != "") {
+                    session(['profil_img_path' => Auth::user()->user_id]);
+                }
+                session(['user_id' => Auth::user()->user_id]);
                 return response()->json([
-                'status' => true,
-                'message' => 'Login Berhasil',
-                 'redirect' => url('/')
+                    'status' => true,
+                    'message' => 'Login Berhasil',
+                    'redirect' => url('/')
                 ]);
             }
 
