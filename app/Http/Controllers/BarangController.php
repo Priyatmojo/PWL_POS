@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use Yajra\DataTables\Facades\DataTables;;
+use Yajra\DataTables\Facades\DataTables;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BarangController extends Controller
 {
@@ -365,4 +366,20 @@ class BarangController extends Controller
         $writer->save('php://output');
         exit;
     } // end fucntion export_excel
+
+    public function export_pdf() {
+        $barang = BarangModel::select('kategori_id','barang_kode','barang_nama','harga_beli','harga_jual')
+            ->orderBy('kategori_id')
+            ->orderBy('barang_kode')
+            ->with('kategori')
+            ->get();
+
+        // use Bartyvdh\DomPDF\Fecade\Pdf;
+        $pdf = Pdf::loadView('barang.export_pdf', ['barang' => $barang]);
+        $pdf->setPaper('a4', 'portait');
+        $pdf->setOption("isRemoteEnabled", true);
+        $pdf->render();
+
+        return $pdf->stream('Data barang'.date('Y-m-d H:i:s').'.pdf');
+    }
 }
