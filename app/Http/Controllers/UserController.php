@@ -6,6 +6,8 @@ use App\Models\LevelModel;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
@@ -181,7 +183,8 @@ class UserController extends Controller
                 'level_id' => 'required|integer',
                 'username' => 'required|string|min:3|unique:m_user,username',
                 'name' => 'required|string|max:100',
-                'password' => 'required:min:6'
+                'password' => 'required:min:6',
+                'file_profile' => 'required|image|mimes:jpeg,png,jpg|max2048'
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -193,6 +196,19 @@ class UserController extends Controller
                     'msgField' => $validator->errors(),
                 ]);
             }
+
+            $fileProfile = $request->file('file_profile')->getClientOriginalExtension();
+
+            $fileNama= 'profile_' . Auth::user()->user_id. '.' . $fileProfile;
+
+            $fileLama= 'profile_pictures/' . $fileNama;
+            if (Storage::disk('public')->exists($fileLama)) {
+                Storage::disk('public')->delete($fileLama);
+            }
+
+            $path = $request->file('file_profile')->storeAs('profile_pictures', $fileNama, 'public');
+
+            session(['profile_img_path' => $path]);
 
             UserModel::create($request->all());
             return response()->json([
@@ -220,7 +236,8 @@ class UserController extends Controller
                 'level_id' => 'required|integer',
                 'username' => 'required|max:20|unique:m_user,username,' . $id . ',user_id',
                 'name'     => 'required|max:100',
-                'password' => 'nullable|min:6|max:20'
+                'password' => 'nullable|min:6|max:20',
+                'file_profile' => 'image|mimes:jpeg,png,jpg|max:2048'
             ];
 
             // use Illuminate\Support\Facades\Validator; 
@@ -239,6 +256,19 @@ class UserController extends Controller
                 if (!$request->filled('password')) { // jika password tidak diisi, maka hapus dari request 
                     $request->request->remove('password');
                 }
+
+                $fileProfile = $request->file('file_profile')->getClientOriginalExtension();
+
+                $fileNama = 'profile_' . Auth::user()->user_id . '.' . $fileProfile;
+
+                $fileLama = 'profile_pictures/' . $fileNama;
+                if (Storage::disk('public')->exists($fileLama)) {
+                    Storage::disk('public')->delete($fileLama);
+                }
+
+                $path = $request->file('file_profile')->storeAs('profile_pictures', $fileNama, 'public');
+
+                session(['profile_img_path' => $path]);
 
                 $check->update($request->all());
                 return response()->json([

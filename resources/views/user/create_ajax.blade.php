@@ -31,6 +31,12 @@ required>
                 <small id="error-nama" class="error-text form-text text-danger"></small>
             </div>
             <div class="form-group">
+                <label>Foto Profile</label>
+                <input type="file" name="file_profile" id="file_profile" class="form-control"
+required>
+                <small id="error-file_profile" class="error-text form-text text-danger"></small>
+            </div>
+            <div class="form-group">
                 <label>Password</label>
                 <input value="" type="password" name="password" id="password" class="form-control" 
 required>
@@ -48,16 +54,40 @@ required>
     $(document).ready(function() {
         $("#form-tambah").validate({
             rules: {
-                level_id: {required: true, number: true},
-                username: {required: true, minlength: 3, maxlength: 20},
-                nama: {required: true, minlength: 3, maxlength: 100},
-                password: {required: true, minlength: 6, maxlength: 20}
+                level_id: {
+                    required: true, 
+                    number: true
+                },
+                username: {
+                    required: true, 
+                    minlength: 3, 
+                    maxlength: 20
+                },
+                nama: {
+                    required: true,
+                    minlength: 3, 
+                    maxlength: 100
+                },
+                file_profile: {
+                    required: true,
+                    extension: "jpg|jpeg|png"
+                },
+                password: {
+                    required: true, 
+                    minlength: 6, 
+                    maxlength: 20
+                }
             },
         submitHandler: function(form) {
+            var formData = new FormData(
+                form
+            );
             $.ajax({
                 url: form.action,
                 type: form.method,
-                data: $(form).serialize(),
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function(response) {
                     if(response.status){
                         $('#myModal').modal('hide');
