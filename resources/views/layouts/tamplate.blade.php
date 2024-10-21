@@ -33,7 +33,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ url('/') }}" class="brand-link">
+            <button onclick="modalAction('{{ url('/user/' . session('user_id') . '/edit_ajax') }}')" class="btn brand-link">
                 @if (session()->has('profile_img_path'))
                     <img id="profile-picture" src="{{ asset('storage/' . session('profile_img_path')) }}" alt="Profile Picture" 
                     class="brand-image img-circle elevation-3">
@@ -42,10 +42,10 @@
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 @endif
                 <span class="brand-text font-weight-light">PWL - Starter Code</span>
-            </a>
+            </button>
 
-            <button onclick="mdoalAction('{{ url('/user/' . session('user_id') . '/edit_ajax') }}')"
-            class="btn btn-prmary btn-sm">Edit Profile</button>
+            {{--<button onclick="mdoalAction('{{ url('/user/' . session('user_id') . '/edit_ajax') }}')"
+            class="btn btn-prmary btn-sm">Edit Profile</button>--}}
             <!-- Sidebar -->
             @include('layouts.sidebar')
             <!-- /.sidebar -->

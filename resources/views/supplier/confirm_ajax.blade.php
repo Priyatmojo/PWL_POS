@@ -40,15 +40,15 @@
                             <th class="text-right col-3">Supplier Nama :</th>
                             <td class="col-9">{{ $supplier->supplier_nama }}</td>
                         </tr>
+                        <tr>
+                            <th class="text-right col-3">Supplier Alamat :</th>
+                            <td class="col-9">{{ $supplier->supplier_alamat }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right col-3">No. Telp :</th>
+                            <td class="col-9">{{ $supplier->no_telp }}</td>
+                        </tr>
                     </table>
-                    <tr>
-                        <th class="text-right col-3">Supplier Alamat :</th>
-                        <td class="col-9">{{ $supplier->supplier_alamat }}</td>
-                    </tr>
-                    <tr>
-                        <th class="text-right col-3">No. Telp :</th>
-                        <td class="col-9">{{ $supplier->no_telp }}</td>
-                    </tr>
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>

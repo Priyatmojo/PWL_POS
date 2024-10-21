@@ -160,25 +160,35 @@ class UserController extends Controller
         $newRequest = [
             'level_id' => $request->level_id,
             'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => $request->password,
+            'nama' => $request->nama
         ];
 
-        $fileExtension = $request->file('file_profile')->getClientOriginalExtension();
+        $check = UserModel::find($id);
+        if ($check) {
+            if($request->filled('password')) {
+                $newRequest['password'] = $request->password;
+            }
 
-        $fileName = 'profile_' . Auth::user()->user_id . '.' . $fileExtension;
+            if ($request->hasFile('file_profil')) {
+                $fileExtension = $request->file('file_profile')->getClientOriginalExtension();
 
-        $oldFile = 'profile_pictures/' . $fileName;
-        if (Storage::disk('public')->exists($oldFile)) {
-            Storage::disk('public')->delete($oldFile);
+                $fileName = 'profile_' . Auth::user()->user_id . '.' . $fileExtension;
+        
+                $oldFile = 'profile_pictures/' . $fileName;
+                if (Storage::disk('public')->exists($oldFile)) {
+                    Storage::disk('public')->delete($oldFile);
+                }
+        
+                $path = $request->file('file_profile')->storeAs('profile_pictures', $fileName, 'public');
+                session(['profile_img_path' => $path]);
+        
+                $newRequest['image_profile'] = $path;
+        
+                UserModel::create($newRequest); 
+            }
+
+            $check->update($newRequest);
         }
-
-        $path = $request->file('file_profile')->storeAs('profile_pictures', $fileName, 'public');
-        session(['profile_img_path' => $path]);
-
-        $newRequest['image_profile'] = $path;
-
-        UserModel::create($newRequest);
 
         return redirect('/user')->with('success', 'Data user berhasil disimpan');
     }
@@ -239,6 +249,13 @@ class UserController extends Controller
                 'username' => $request->username,
                 'nama'     => $request->nama,
                 'password' => $request->password,
+            ];
+
+            $newRequest = [
+                'level_id' => $request->level_id,
+                'username' => $request->username,
+                'nama' => $request->nama,
+                'password' => $request->password
             ];
 
             $fileExtension = $request->file('file_profile')->getClientOriginalExtension();
@@ -321,7 +338,9 @@ class UserController extends Controller
 
                     $path = $request->file('file_profile')->storeAs('profile_pictures', $fileName, 'public');
 
-                    session(['profile_img_path' => $path]);
+                    session(['profile_img_path' => Auth::user()->image_profile]);
+
+                    $newRequest['image_profile'] = $path;
                 }
    
                 $check->update($newRequest);

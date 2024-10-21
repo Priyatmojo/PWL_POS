@@ -25,7 +25,7 @@ horizontal">
                             <select class="form-control" id="level_id" name="level_id" required>
                                 <option value="">- Pilih Level -</option>
                                 @foreach ($level as $item)
-                                    <option value="{{ $item->level_id }}" @if ($item->level_id == $user -> level_id) selected @endif>
+                                    <option value="{{ $item->level_id }}" @if ($item->level_id == $user->level_id) selected @endif>
                                         {{ $item->level_nama }}</option>
                                 @endforeach
                             </select>
@@ -54,6 +54,16 @@ horizontal">
                             @enderror
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-1 control-label col-form-label">Foto Profil</label>
+                        <div class="col-11">
+                            <input type="file" class="form-control" id="file_profil" name="file_profil"
+                                value="{{ old('file_profil', $user->name) }}" required>
+                            @error('file_profil')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>e
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Password</label>
                         <div class="col-11">

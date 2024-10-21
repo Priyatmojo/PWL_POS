@@ -76,7 +76,7 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" style="width: 60; height= 60;"></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -95,22 +95,22 @@
             <thead>
                 <tr>
                     <th class="text-center">No</th>
-                    <th>Kode Barang</th>
+                    <th>Nama Supplier</th>
                     <th>Nama Barang</th>
-                    <th class="text-right">Harga Beli</th>
-                    <th class="text-right">Harga Jual</th>
-                    <th>Kategori</th>
+                    <th>Nama User</th>
+                    <th>Stok Tanggal</th>
+                    <th>Stok Jumlah</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($barang as $b)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $b->barang_kode }}</td>
-                        <td>{{ $b->barang_nama }}</td>
-                        <td class="text-right">{{ number_format($b->harga_beli, 0, ',', '.') }}</td>
-                        <td class="text-right">{{ number_format($b->harga_jual, 0, ',', '.') }}</td>
-                        <td>{{ $b->kategori->kategori_nama }}</td>
+                        <td>{{ $b->supplier->supplier_nama }}</td>
+                        <td>{{ $b->barang->barang_nama }}</td>
+                        <td>{{ $b->user->name }}</td>
+                        <td>{{ $b->stok_tanggal }}</td>
+                        <td>{{ $b->stok_jumlah }}</td>
                     </tr>
                 @endforeach
             </tbody>
