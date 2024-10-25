@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <th>Nama User</th>
-                        <td>{{ $stok->user->name }}</td>
+                        <td>{{ $stok->user->nama }}</td>
                     </tr>
                     <tr>
                         <th>Stok tanggal</th>

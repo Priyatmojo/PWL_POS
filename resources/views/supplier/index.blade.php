@@ -52,6 +52,9 @@
                     "url": "{{ url('supplier/list') }}",
                     "dataType": "json",
                     "type": "POST",
+                    'data': {
+                        _token: '{{ csrf_token() }}'
+                    }
                 },
                 columns: [{
                     // nomor urut dari laravel datatable addIndexColumn() 

@@ -40,6 +40,9 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">User</label>
                     <div class="col-11">
+                        <input type="number" class="form-control" id="harga_beli" name="harga_beli"
+                            value="{{ old('harga_beli') }}" required>
+                        @error('harga_beli')
                         <select class="form-control" id="user_id" name="user_id" required>
                             <option value="">- Pilih User -</option>
                             @foreach ($user as $item)
@@ -52,7 +55,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label">Stok Tanggal</label>
+                    <label class="col-1 control-label col-form-label">Harga jual</label>
+                    <label class="col-1 control-label col-form-label">Stok tanggal</label>
                     <div class="col-11">
                         <input type="date" class="form-control" id="stok_tanggal" name="stok_tanggal"
                             value="{{ old('stok_tanggal')->format('Y-m-d') }}" required>
@@ -64,9 +68,16 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Stok Jumlah</label>
                     <div class="col-11">
+                        <select class="form-control" id="kategori_id" name="kategori_id" required>
+                            <option value="">- Pilih Kategori -</option>
+                            @foreach ($kategori as $item)
+                                <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
+                            @endforeach
+                        </select>
+                        @error('kategori_id')
                         <input type="number" class="form-control" id="stok_jumlah" name="stok_jumlah"
-                        value="{{ old('stok_jumlah') }}" required>
-                    @error('stok_jumlah')
+                            value="{{ old('stok_jumlah') }}" required>
+                        @error('stok_jumlah')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>

@@ -29,7 +29,7 @@
                 <div class="modal-body">
                     <div class="alert alert-warning">
                         <h5><i class="icon fas fa-ban"></i> Konfirmasi !!!</h5>
-                        Apakah Anda yakin ingin menghapus data seperti di bawah ini?
+                        Apakah Anda ingin menghapus data seperti di bawah ini?
                     </div>
                     <table class="table table-sm table-bordered table-striped">
                         <tr>
@@ -37,15 +37,15 @@
                             <td class="col-9">{{ $stok->supplier->supplier_nama }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right col-3">Nama Barang :</th>
-                            <td class="col-9">{{ $barang->barang_nama }}</td>
+                            <th class="text-right col-3">Barang Nama :</th>
+                            <td class="col-9">{{ $stok->barang->barang_nama }}</td>
                         </tr>
                         <tr>
                             <th class="text-right col-3">Nama User :</th>
                             <td class="col-9">{{ $stok->user->nama }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right col-3">Stok Tanggal :</th>
+                            <th class="text-right col-3">Tanggal Stok :</th>
                             <td class="col-9">{{ $stok->stok_tanggal }}</td>
                         </tr>
                         <tr>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
-                    <button type="submit" class="btn btn-primary">Hapus</button>
+                    <button type="submit" class="btn btn-primary">Ya, Hapus</button>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                                     title: 'Berhasil',
                                     text: response.message
                                 });
-                                dataStok.ajax.reload();
+                                dataUser.ajax.reload();
                             } else {
                                 $('.error-text').text('');
                                 $.each(response.msgField, function(prefix, val) {

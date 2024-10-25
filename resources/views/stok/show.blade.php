@@ -31,8 +31,8 @@
                         <td>{{ $stok->user->nama }}</td>
                     </tr>
                     <tr>
-                        <th>Stok Tanggal</th>
-                        <td>{{ stok->stok_tanggal->format('Y-m-d') }}</td>
+                        <th>Stok tanggal</th>
+                        <td>{{ $stok->stok_tanggal->format('Y-m-d') }}</td>
                     </tr>
                     <tr>
                         <th>Stok jumlah</th>
@@ -44,7 +44,9 @@
         </div>
     </div>
 @endsection
+
 @push('css')
 @endpush
+
 @push('js')
 @endpush

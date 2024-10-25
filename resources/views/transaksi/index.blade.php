@@ -53,8 +53,8 @@
                     "url": "{{ url('transaksi/list') }}",
                     "dataType": "json",
                     "type": "POST",
-                    "data": function(d) {
-                        d.filter_kategori = $('.filter_kategori').val();
+                    'data': {
+                        _token: '{{ csrf_token() }}'
                     }
                 },
                 columns: [{
@@ -64,7 +64,7 @@
                     orderable: false,
                     searchable: false
                 }, {
-                    data: "user.name",
+                    data: "user.nama",
                     className: "",
                     width: "10%",
                     orderable: true,

@@ -9,7 +9,7 @@
                 <a href="{{ url('/level/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export
                     Level</a>
                 <button onclick="modalAction('{{ url('level/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
-                    Ajax</button>
+                Ajax</button>
             </div>
         </div>
         <div class="card-body">
@@ -33,8 +33,11 @@
     </div>
     </div>
     <div id="myModal" class="modal fade animate shake" tabindex="-1" role="dialog" data backdrop="static"
-        data-keyboard="false" data-width="75%" aria-hidden="true"></div>
+    data-keyboard="false" data-width="75%" aria-hidden="true"></div>
 @endsection
+
+@push('css')
+@endpush
 
 @push('js')
     <script>
@@ -43,10 +46,10 @@
                 $('#myModal').modal('show');
             });
         }
-        var dataUser;
         
+        var dataUser;
         $(document).ready(function() {
-            dataUser = $('#table_user').DataTable({
+            var dataUser = $('#table_user').DataTable({
                 // serverSide: true, jika ingin menggunakan server side processing 
                 serverSide: true,
                 ajax: {

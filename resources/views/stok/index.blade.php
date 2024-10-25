@@ -3,13 +3,12 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Daftar Stok</h3>
+            <h3 class="card-title">Daftar stok</h3>
             <div class="card-tools">
-                <button onclick="modalAction('{{ url('/barang/import') }}')" class="btn btn-info">Import Stok</button>
-                <a href="{{ url('/stok/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Stok</a>
-                <a href="{{ url('/stok/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Stok</a> 
-                <button onclick="modalAction('{{ url('/stok/create_ajax') }}')" class="btn btn-success">Tambah Data Stok
-                    (Ajax)</button>
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('stok/create') }}">Tambah</a>
+                <a href="{{ url('/stok/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Stok</a>
+                <button onclick="modalAction('{{ url('/stok/create_ajax') }}')" class="btn btn-success">Tambah
+                    Data(Ajax)</button>
             </div>
         </div>
         <div class="card-body">
@@ -38,6 +37,7 @@
     <div id="myModal" class="modal fade animate shake" tabindex="-1" data-backdrop="static" data-keyboard="false"
         data-width="75%"></div>
 @endsection
+
 @push('js')
     <script>
         function modalAction(url = '') {
@@ -45,7 +45,6 @@
                 $('#myModal').modal('show');
             });
         }
-        
         var tableStok;
         $(document).ready(function() {
             tableStok = $('#table-stok').DataTable({
@@ -59,7 +58,6 @@
                         d.filter_kategori = $('.filter_kategori').val();
                     }
                 },
-
                 columns: [{
                     // nomor urut dari laravel datatable addIndexColumn() 
                     data: "DT_RowIndex",
@@ -83,8 +81,7 @@
                     className: "",
                     width: "10%",
                     orderable: true,
-                    searchable: true
-                    }
+                    searchable: true,
                 }, {
                     data: "stok_tanggal",
                     className: "",
@@ -92,7 +89,15 @@
                     orderable: true,
                     searchable: false,
                     render: function(data, type, row) {
-                        return new Intl.NumberFormat('id-ID').format(data);
+                        if (data) {
+                            var date = new Date(data);
+                            var year = date.getFullYear();
+                            var month = ("0" + (date.getMonth() + 1)).slice(-
+                            2); // Add leading zero
+                            var day = ("0" + date.getDate()).slice(-2); // Add leading zero
+                            return year + "-" + month + "-" + day; // Format as YYYY-MM-DD
+                        }
+                        return data; // Return original value if no data
                     }
                 }, {
                     data: "stok_jumlah",
@@ -108,14 +113,12 @@
                     searchable: false
                 }]
             });
-
             $('#table-stok_filter input').unbind().bind().on('keyup', function(e) {
-                if (e.keyCode == 13) { 
+                if (e.keyCode == 13) { // enter key 
                     tableStok.search(this.value).draw();
                 }
             });
-
-            $('.filter_stok').change(function() {
+            $('.filter_kategori').change(function() {
                 tableStok.draw();
             });
         });

@@ -60,8 +60,8 @@ Pengguna</th><th>Aksi</th></tr>
               "url": "{{ url('user/list') }}", 
               "dataType": "json", 
               "type": "POST", 
-              'data': function (d) {
-                d.level_id = $('#level_id').val();
+              'data': {
+                _token: '{{ csrf_token() }}'
               }
           }, 
           columns: [ 

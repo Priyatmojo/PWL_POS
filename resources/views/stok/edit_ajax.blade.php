@@ -22,7 +22,7 @@
         <div id="modal-master" class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria label="Close"><span
                             aria-hidden="true">&times;</span></button>
                 </div>
@@ -64,9 +64,10 @@
                     </div>
                     <div class="form-group">
                         <label>Stok tanggal</label>
-                        <input value="{{ $stok->stok_tanggal->format('Y-m-d') }}" type="date" name="stok_tanggal" id="stok_tanggal"
-                            class="form-control" required>
-                            <small id="error-stok_tanggal" class="error-text form-text text-danger"></small>
+                        <input value="{{ $stok->stok_tanggal->format('Y-m-d') }}" type="date" name="stok_tanggal"
+                            id="stok_tanggal" class="form-control" required>
+                        <small id="error-harga_jual" class="error-text form-text text-danger"></small>
+                        <small id="error-stok_tanggal" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Stok jumlah</label>
@@ -85,27 +86,28 @@
     <script>
         $(document).ready(function() {
             $("#form-edit").validate({
-                rules: {
-                    supplier_id: {
-                        required: true,
-                        number: true
-                    },
-                    barang_id: {
-                        required: true,
-                        number: true
-                    },
-                    user_id: {
-                        required: true,
-                        number: true
-                    },
-                    stok_tanggal: {
-                        required: true,
-                        date: true
-                    },
-                    stok_jumlah: {
-                        required: true,
-                        number: true
-                    },
+                    rules: {
+                        supplier_id: {
+                            required: true,
+                            number: true
+                        },
+                        barang_id: {
+                            required: true,
+                            number: true
+                        },
+                        user_id: {
+                            required: true,
+                            number: true
+                        },
+                        stok_tanggal: {
+                            required: true,
+                            date: true,
+                        },
+                        stok_jumlah: {
+                            required: true,
+                        },
+                        number: true,
+                    }
                 },
                 submitHandler: function(form) {
                     $.ajax({
@@ -120,7 +122,7 @@
                                     title: 'Berhasil',
                                     text: response.message
                                 });
-                                dataStok.ajax.reload();
+                                tableStok.ajax.reload();
                             } else {
                                 $('.error-text').text('');
                                 $.each(response.msgField, function(prefix, val) {

@@ -30,11 +30,11 @@
                         <td>{{ $barang->barang_id }}</td>
                     </tr>
                     <tr>
-                        <th>Kode Barang</th>
+                        <th>Barang kode</th>
                         <td>{{ $barang->barang_kode }}</td>
                     </tr>
                     <tr>
-                        <th>Nama Barang</th>
+                        <th>Barang nama</th>
                         <td>{{ $barang->barang_nama }}</td>
                     </tr>
                     <tr>

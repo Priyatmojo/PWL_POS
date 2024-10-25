@@ -14,15 +14,13 @@
                 </div>
                 <a href="{{ url('stok') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
             @else
-                <form method="POST" action="{{ url('/stok/' . $stok->stok_id) }}" class="form
-horizontal">
+                <form method="POST" action="{{ url('/stok/' . $stok->stok_id) }}" class="form-horizontal">
                     @csrf
-                    {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit yang butuh
-                                method PUT -->
+                    {!! method_field('PUT') !!} <!-- tambahkan baris ini untuk proses edit yang butuh method PUT -->
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Stok</label>
                         <div class="col-11">
-                            <select class="form-control" id="stok_id" name="stok_id" required>
+                            <<select class="form-control" id="stok_id" name="stok_id" required>
                                 <option value="">- Pilih Stok -</option>
                                 @foreach ($stok as $item)
                                     <option value="{{ $item->stok_id }}" @if ($item->stok_id == $stok->stok_id) selected @endif>
@@ -65,7 +63,7 @@ horizontal">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Stok Tanggal</label>
+                        <label class="col-1 control-label col-form-label">Stok tanggal</label>
                         <div class="col-11">
                             <input type="date" class="form-control" id="stok_tanggal" name="stok_tanggal"
                                 value="{{ old('stok_tanggal', $stok->stok_tanggal->format('Y-m-d')) }}" required>
@@ -75,7 +73,7 @@ horizontal">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Stok Jumlah</label>
+                        <label class="col-1 control-label col-form-label">Stok jumlah</label>
                         <div class="col-11">
                             <input type="number" class="form-control" id="stok_jumlah" name="stok_jumlah"
                                 value="{{ old('stok_jumlah', $stok->stok_jumlah) }}" required>
@@ -96,6 +94,7 @@ horizontal">
         </div>
     </div>
 @endsection
+
 @push('css')
 @endpush
 @push('js')

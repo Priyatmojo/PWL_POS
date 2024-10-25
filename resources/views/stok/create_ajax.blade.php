@@ -33,7 +33,7 @@
                     <select name="user_id" id="user_id" class="form-control" required>
                         <option value="">- Pilih User -</option>
                         @foreach ($user as $l)
-                            <option value="{{ $l->user_id }}">{{ $l->name }}</option>
+                            <option value="{{ $l->user_id }}">{{ $l->nama }}</option>
                         @endforeach
                     </select>
                     <small id="error-user_id" class="error-text form-text text-danger"></small>
@@ -42,7 +42,8 @@
                     <label>Stok Tanggal</label>
                     <input value="" type="date" name="stok_tanggal" id="stok_tanggal" class="form-control"
                         required>
-                        <small id="error-stok_tanggal" class="error-text form-text text-danger"></small>
+                    <small id="error-harga_jual" class="error-text form-text text-danger"></small>
+                    <small id="error-stok_tanggal" class="error-text form-text text-danger"></small>
                 </div>
                 <div class="form-group">
                     <label>Stok Jumlah</label>
@@ -69,19 +70,20 @@
                 barang_id: {
                     required: true,
                     number: true
-                },
+                },  
                 user_id: {
                     required: true,
                     number: true
                 },
                 stok_tanggal: {
                     required: true,
-                    date: true
+                    date: true,
                 },
                 stok_jumlah: {
                     required: true,
-                    number: true
                 },
+                    number: true,
+                }
             },
             submitHandler: function(form) {
                 $.ajax({
@@ -96,7 +98,7 @@
                                 title: 'Berhasil',
                                 text: response.message
                             });
-                            dataStok.ajax.reload();
+                            tableStok.ajax.reload();
                         } else {
                             $('.error-text').text('');
                             $.each(response.msgField, function(prefix, val) {
