@@ -8,8 +8,6 @@
                 <button onclick="modalAction('{{ url('kategori/import') }}')" class="btn btn-sm btn-success mt-1">Import Kategori</button>
                 <a href="{{ url('/kategori/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export
                     Kategori</a>
-                <button onclick="modalAction('{{ url('kategori/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
-                Ajax</button>
             </div>
         </div>
         <div class="card-body">
@@ -56,6 +54,9 @@
                     "url": "{{ url('kategori/list') }}",
                     "dataType": "json",
                     "type": "POST",
+                    'data': {
+                        _token = '{{csrf_token()}}'
+                    }
                 },
                 columns: [{
                     data: "DT_RowIndex",

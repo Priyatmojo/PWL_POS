@@ -40,7 +40,9 @@
         </div>
     </div>
 @endsection
+
 @push('css')
 @endpush
+
 @push('js')
 @endpush

@@ -61,7 +61,7 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" style="width: 60; height= 60;"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" class="image"></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -91,7 +91,7 @@
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $b->level->level_nama }}</td>
                         <td>{{ $b->username }}</td>
-                        <td>{{ $b->name }}</td>
+                        <td>{{ $b->nama }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -61,7 +61,7 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" class="image"></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -76,7 +76,7 @@
         </tr>
     </table>
     <h3 class="text-center">LAPORAN DATA TRANSAKSI</h3>
-    <h4>Nama User: {{ $transaksi->user->name }}</h4>
+    <h4>Nama User: {{ $transaksi->user->nama }}</h4>
     <h4>Pembeli: {{ $transaksi->pembeli }}</h4>
     <h4>Kode Penjualan: {{ $transaksi->penjualan_kode }}</h4>
     <h4>Tanggal Penjualan: {{ $transaksi->penjualan_tanggal->format('Y-m-d') }}</h4>

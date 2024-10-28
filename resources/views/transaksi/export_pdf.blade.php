@@ -61,7 +61,7 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" style="width: 60; height= 60;"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" class="image" ></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -90,7 +90,7 @@
                 @foreach ($transaksi as $b)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $b->user->name }}</td>
+                        <td>{{ $b->user->nama }}</td>
                         <td>{{ $b->pembeli }}</td>
                         <td>{{ $b->penjualan_kode }}</td>
                         <td>{{ $b->penjualan_tanggal }}</td>

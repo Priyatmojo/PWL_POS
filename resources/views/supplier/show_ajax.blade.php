@@ -42,8 +42,8 @@
                         <td>{{ $supplier->supplier_alamat }}</td>
                     </tr>
                     <tr>
-                        <th>No. Telp</th>
-                        <td>{{ $supplier->no_telp }}</td>
+                        <th>Telepon Supplier</th>
+                        <td>{{ $supplier->supplier_telepon }}</td>
                     </tr>
                 </table>
             </div>

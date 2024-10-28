@@ -6,9 +6,9 @@
             <h3 class="card-title">Daftar transaksi</h3>
             <div class="card-tools">
                 <a class="btn btn-sm btn-primary mt-1" href="{{ url('transaksi/create') }}">Tambah</a>
-                <a href="{{ url('/transaksi/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export
+                <a href="{{ url('/penjualan/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export
                     Transaksi</a>
-                <button onclick="modalAction('{{ url('/transaksi/create_ajax') }}')" class="btn btn-success">Tambah
+                <button onclick="modalAction('{{ url('/penjualan/create_ajax') }}')" class="btn btn-success">Tambah
                     Data(Ajax)</button>
             </div>
         </div>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div id="myModal" class="modal fade animate shake" tabindex="-1" data-backdrop="static" data-keyboard="false"
-        data-width="75%" role="dialog" aria-hidden="true"></div>
+        data-width="75%"></div>
 @endsection
 @push('js')
     <script>
@@ -50,11 +50,11 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    "url": "{{ url('transaksi/list') }}",
+                    "url": "{{ url('penjualan/list') }}",
                     "dataType": "json",
                     "type": "POST",
-                    'data': {
-                        _token: '{{ csrf_token() }}'
+                    "data": function(d) {
+                        d.filter_kategori = $('.filter_kategori').val();
                     }
                 },
                 columns: [{
@@ -115,5 +115,3 @@
                 tableTransaksi.draw();
             });
         });
-    </script>
-@endpush

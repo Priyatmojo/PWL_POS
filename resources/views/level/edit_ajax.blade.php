@@ -22,7 +22,7 @@
         <div id="modal-master" class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Level</h5>
                     <button type="button" class="close" data-dismiss="modal" aria label="Close"><span
                             aria-hidden="true">&times;</span></button>
                 </div>
@@ -51,15 +51,8 @@
         $(document).ready(function() {
             $("#form-edit").validate({
                 rules: {
-                    level_kode: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 10
-                    },
-                    level_nama: {
-                        required: true,
-                        maxlength: 100
-                    },
+                    level_kode: {required: true, minlength: 2, maxlength: 10},
+                    level_nama: {required: true, maxlength: 100},
                 },
                 submitHandler: function(form) {
                     $.ajax({

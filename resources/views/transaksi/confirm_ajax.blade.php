@@ -11,12 +11,12 @@
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!!!</h5>
                     Data yang anda cari tidak ditemukan
                 </div>
-                <a href="{{ url('/transaksi') }}" class="btn btn-warning">Kembali</a>
+                <a href="{{ url('/penjualan') }}" class="btn btn-warning">Kembali</a>
             </div>
         </div>
     </div>
 @else
-    <form action="{{ url('/transaksi/' . $transaksi->penjualan_id . '/delete_ajax') }}" method="POST" id="form-delete">
+    <form action="{{ url('/penjualan/' . $transaksi->penjualan_id . '/delete_ajax') }}" method="POST" id="form-delete">
         @csrf
         @method('DELETE')
         <div id="modal-master" class="modal-dialog modal-lg" role="document">
@@ -38,7 +38,7 @@
                         </tr>
                         <tr>
                             <th>User</th>
-                            <td>{{ $transaksi->user->name }}</td>
+                            <td>{{ $transaksi->user->nama }}</td>
                         </tr>
                         <tr>
                             <th>Penjualan kode</th>

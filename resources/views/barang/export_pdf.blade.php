@@ -80,7 +80,7 @@
                 <th class="text-right">Harga Jual</th>
                 <th>Kategori</th>
             </tr>
-        </thead>
+        </thead>s
         <tbody>
             @foreach($barang as $b)
             <tr>

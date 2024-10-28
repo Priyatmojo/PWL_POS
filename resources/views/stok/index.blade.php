@@ -57,6 +57,9 @@
                     "data": function(d) {
                         d.filter_kategori = $('.filter_kategori').val();
                     }
+                    'data':{
+                        _token = '{{csrf_token()}}',
+                    }
                 },
                 columns: [{
                     // nomor urut dari laravel datatable addIndexColumn() 

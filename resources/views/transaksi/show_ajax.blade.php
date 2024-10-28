@@ -11,7 +11,7 @@
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!!!</h5>
                     Data yang anda cari tidak ditemukan
                 </div>
-                <a href="{{ url('/transaksi') }}" class="btn btn-warning">Kembali</a>
+                <a href="{{ url('/penjualan') }}" class="btn btn-warning">Kembali</a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <th>User</th>
-                        <td>{{ $transaksi->user->name }}</td>
+                        <td>{{ $transaksi->user->nama }}</td>
                     </tr>
                     <tr>
                         <th>Penjualan kode</th>
@@ -58,7 +58,7 @@
                                         Jumlah {{ $detail->jumlah }}
                                     </small>
                                     <small class="badge badge-success">
-                                        Harga Rp{{ number_format($detail->harga) }}
+                                        Harga {{ number_format($detail->harga) }}
                                     </small>
                                 </li>
                             @endforeach

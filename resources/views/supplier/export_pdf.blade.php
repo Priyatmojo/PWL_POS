@@ -61,7 +61,7 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" style="width: 60; height= 60;"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}" class="image" ></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -83,7 +83,7 @@
                     <th>Kode Supplier</th>
                     <th>Nama Supplier</th>
                     <th>Alamat Supplier</th>
-                    <th>No. Telp</th>
+                    <th>Telepon Supplier</th>
                 </tr>
             </thead>
             <tbody>
@@ -93,7 +93,8 @@
                         <td>{{ $b->supplier_kode }}</td>
                         <td>{{ $b->supplier_nama }}</td>
                         <td>{{ $b->supplier_alamat }}</td>
-                        <td>{{ $b->no_telp }}</td>
+                        <td>{{ $b->supplier_telepon }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
