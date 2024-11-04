@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\BarangController;
 */
 
 Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
+Route::post('/registerbaru', App\Http\Controllers\Api\RegisterController::class)->name('registerbaru');
 Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
 Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
