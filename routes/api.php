@@ -47,6 +47,7 @@ Route::get('barang', [BarangController::class, 'index']);
 Route::post('barang', [BarangController::class, 'store']);
 Route::get('barang/{barang}', [BarangController::class, 'show']);
 Route::put('barang/{barang}', [BarangController::class, 'update']);
+Route::put('barangbaru/{barang}', [BarangController::class, 'updatebaru']);
 Route::delete('barang/{barang}', [BarangController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
