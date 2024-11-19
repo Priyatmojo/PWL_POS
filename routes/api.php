@@ -25,6 +25,8 @@ Route::post('/registerbaru', App\Http\Controllers\Api\RegisterController::class)
 Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
 Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
+Route::middleware('auth:api')->group(function(){
+
 Route::get('levels', [LevelController::class, 'index']);
 Route::post('levels', [LevelController::class, 'store']);
 Route::get('levels/{level}', [LevelController::class, 'show']);
@@ -50,6 +52,4 @@ Route::put('barang/{barang}', [BarangController::class, 'update']);
 Route::put('barangbaru/{barang}', [BarangController::class, 'updatebaru']);
 Route::delete('barang/{barang}', [BarangController::class, 'destroy']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
 });
